@@ -1,10 +1,8 @@
 package dojo.devices;
 
-import dojo.vo.Book;
 import dojo.vo.HarryPotter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ShopCart {
   private List<HarryPotter> carts;
