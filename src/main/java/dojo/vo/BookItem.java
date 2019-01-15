@@ -1,6 +1,6 @@
 package dojo.vo;
 
-public class BookItem {
+public class BookItem implements Comparable{
   private HarryPotter hp;
   private int bookSizes;
 
@@ -23,5 +23,13 @@ public class BookItem {
 
   public void setBookSizes(int bookSizes) {
     this.bookSizes = bookSizes;
+  }
+
+  public void decreaseBookSizes() {
+    this.bookSizes--;
+  }
+
+  public int compareTo(Object o) {
+    return bookSizes - ((BookItem)o).getBookSizes();
   }
 }

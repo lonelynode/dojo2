@@ -9,8 +9,8 @@ public class HarryPotter extends Book {
     super();
   }
 
-  public HarryPotter(String name, double price) {
-    super(name, price);
+  public HarryPotter(String name) {
+    super(name);
   }
 
   @Override
