@@ -31,25 +31,27 @@ public class Calculate {
     List<BookItem> bookItemList = carts.getBookItemList();
     List<Integer> bookTeam = new ArrayList<Integer>();
     while (bookItemList.size() > 0) {
-      int booktype = 0;
-      for (int i = 0; i < bookItemList.size(); i++) {
-        BookItem bookItem = bookItemList.get(i);
-        int bookSize = bookItem.getBookSizes();
-        bookItem.decreaseBookSizes();
-        bookItemList.set(i, bookItem);
-        booktype++;
-        if (bookSize - 1 == 0) {
-          bookItemList.remove(bookItem);
-          i--;
-        }
-      }
+      int booktype = extractBookGroup(bookItemList);
       bookTeam.add(booktype);
     }
     for (Integer size : bookTeam) {
       price += 8 * size * (1 - getDiscount(size));
     }
-
     return price;
+  }
+
+  private int extractBookGroup(List<BookItem> bookItemList) {
+    int bookTypes = bookItemList.size();
+    for (int i = 0; i < bookItemList.size(); i++) {
+      BookItem bookItem = bookItemList.get(i);
+      bookItem.decreaseBookSizes();
+      bookItemList.set(i, bookItem);
+      if (bookItem.hasBookSize()) {
+        bookItemList.remove(bookItem);
+        i--;
+      }
+    }
+    return bookTypes;
   }
 
   private double getDiscount(int bookTypes) {

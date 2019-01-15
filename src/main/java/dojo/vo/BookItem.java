@@ -29,6 +29,10 @@ public class BookItem implements Comparable{
     this.bookSizes--;
   }
 
+  public boolean hasBookSize() {
+    return bookSizes == 0;
+  }
+
   public int compareTo(Object o) {
     return bookSizes - ((BookItem)o).getBookSizes();
   }
