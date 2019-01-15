@@ -77,7 +77,6 @@ public class CalculateTest {
   @Test
   public void should_return_right_eur_when_calculate_book_price_given_8_books_with_3_group_of_2_copy_2_group_of_only_one() {
     ShopCart carts = new ShopCart();
-
     BookItem hp1Item = new BookItem(harryPotter1, 2);
     BookItem hp2Item = new BookItem(harryPotter2, 2);
     BookItem hp3Item = new BookItem(harryPotter3, 2);
@@ -90,7 +89,28 @@ public class CalculateTest {
     carts.addBookItem(hp5Item);
 
     double actualPrice = calculate.calculateBookPrice(carts);
+
     double expectedPrice = 51.2;
     Assert.assertEquals(expectedPrice, actualPrice, rangePermitted);
   }
+
+//  @Test
+//  public void test(){
+//    ShopCart carts = new ShopCart();
+//    BookItem hp1Item = new BookItem(harryPotter1, 10);
+//    BookItem hp2Item = new BookItem(harryPotter2, 9);
+//    BookItem hp3Item = new BookItem(harryPotter3, 8);
+//    BookItem hp4Item = new BookItem(harryPotter4, 7);
+//    BookItem hp5Item = new BookItem(harryPotter5, 6);
+//    carts.addBookItem(hp1Item);
+//    carts.addBookItem(hp2Item);
+//    carts.addBookItem(hp3Item);
+//    carts.addBookItem(hp4Item);
+//    carts.addBookItem(hp5Item);
+//
+//    double actualPrice = calculate.calculateBookPrice(carts);
+//
+//    double expectedPrice = 51.2;
+//    Assert.assertEquals(expectedPrice, actualPrice, rangePermitted);
+//  }
 }
