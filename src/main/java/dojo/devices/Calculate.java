@@ -1,5 +1,6 @@
 package dojo.devices;
 
+import dojo.uitl.ArrayUtil;
 import dojo.vo.BookItem;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,10 +35,33 @@ public class Calculate {
       int booktype = extractBookGroup(bookItemList);
       bookTeam.add(booktype);
     }
-    for (Integer size : bookTeam) {
-      price += 8 * size * (1 - getDiscount(size));
+
+    Integer[] bookTeamArray = balanceGropu(bookTeam);
+
+    for (Integer bookTypes : bookTeamArray) {
+      price += 8 * bookTypes * (1 - getDiscount(bookTypes));
     }
     return price;
+  }
+
+  private Integer[] balanceGropu(List<Integer> bookTeam) {
+    Integer[] bookTeamArray = bookTeam.toArray(new Integer[bookTeam.size()]);
+    int low = 0;
+    int high = bookTeamArray.length - 1;
+    ArrayUtil.sortFromGrantToSmall(bookTeamArray, 0, high);
+    while(low < high) {
+      if(bookTeamArray[low] == 5 && bookTeamArray[high] == 3) {
+        bookTeamArray[low]--;
+        bookTeamArray[high]++;
+      }
+      if(bookTeamArray[low] != 5) {
+        low++;
+      }
+      if(bookTeamArray[high] != 3) {
+        high--;
+      }
+    }
+    return bookTeamArray;
   }
 
   private int extractBookGroup(List<BookItem> bookItemList) {
