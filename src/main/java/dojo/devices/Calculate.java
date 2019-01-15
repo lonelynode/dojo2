@@ -1,9 +1,11 @@
 package dojo.devices;
 
+import dojo.vo.BookItem;
 import dojo.vo.HarryPotter;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Calculate {
 
@@ -22,15 +24,16 @@ public class Calculate {
   }
 
   public double calculateBookPrice(ShopCart carts) {
-    List<HarryPotter> books = carts.getCarts();
     double price = 0;
-    for(HarryPotter book: books) {
-      price += book.getPrice();
+    if(carts.getBookTypes() < 2) {
+      BookItem bookItem = carts.getBookItemList().get(0);
+      return bookItem.getBookSizes() * bookItem.getHp().getPrice();
     }
-    return books.size() > 1 ? (price * (1 - getDiscount(books.size()))) : price;
+    
+    return 0;
   }
 
-  private double getDiscount(int bookNumbers) {
-    return discountLevel.get(bookNumbers);
+  private double getDiscount(int bookTypes) {
+    return discountLevel.get(bookTypes);
   }
 }
