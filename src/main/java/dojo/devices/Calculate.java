@@ -45,7 +45,7 @@ public class Calculate {
   }
 
   private Integer[] balanceGropu(List<Integer> bookTeam) {
-    Integer[] bookTeamArray = bookTeam.toArray(new Integer[bookTeam.size()]);
+    Integer[] bookTeamArray = bookTeam.toArray(new Integer[0]);
     int low = 0;
     int high = bookTeamArray.length - 1;
     ArrayUtil.sortFromGrantToSmall(bookTeamArray, 0, high);

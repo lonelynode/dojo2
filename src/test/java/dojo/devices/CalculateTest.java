@@ -17,7 +17,7 @@ public class CalculateTest {
   private HarryPotter harryPotter5;
 
   @Before
-  public void Setup() {
+  public void setup() {
     calculate = new Calculate();
     rangePermitted = 0.001;
     harryPotter1 = new HarryPotter("HarryPotter1");
@@ -90,7 +90,6 @@ public class CalculateTest {
     carts.addBookItem(hp5Item);
 
     double actualPrice = calculate.calculateBookPrice(carts);
-    System.out.println(actualPrice);
     double expectedPrice = 51.2;
     Assert.assertEquals(expectedPrice, actualPrice, rangePermitted);
   }
