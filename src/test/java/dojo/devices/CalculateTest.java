@@ -94,23 +94,4 @@ public class CalculateTest {
     Assert.assertEquals(expectedPrice, actualPrice, rangePermitted);
   }
 
-//  @Test
-//  public void test(){
-//    ShopCart carts = new ShopCart();
-//    BookItem hp1Item = new BookItem(harryPotter1, 10);
-//    BookItem hp2Item = new BookItem(harryPotter2, 9);
-//    BookItem hp3Item = new BookItem(harryPotter3, 8);
-//    BookItem hp4Item = new BookItem(harryPotter4, 7);
-//    BookItem hp5Item = new BookItem(harryPotter5, 6);
-//    carts.addBookItem(hp1Item);
-//    carts.addBookItem(hp2Item);
-//    carts.addBookItem(hp3Item);
-//    carts.addBookItem(hp4Item);
-//    carts.addBookItem(hp5Item);
-//
-//    double actualPrice = calculate.calculateBookPrice(carts);
-//
-//    double expectedPrice = 51.2;
-//    Assert.assertEquals(expectedPrice, actualPrice, rangePermitted);
-//  }
 }

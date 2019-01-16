@@ -64,25 +64,38 @@ public class Calculate {
         int high = 0;
         int m = array[i];
         int n = array[j];
-        while (m < n) {
-          m++;
-          n--;
-          double price2 = calculateGroupPrice(m, 8, getDiscount(m)) + calculateGroupPrice(n, 8, getDiscount(n));
-          if (price1 > price2) {
-            low = array[i];
-            high = array[j];
+
+        if(!alreadyHasCriticalties(m , n)) {
+          while (m < n) {
+            m++;
+            n--;
+            double price2 = calculateGroupPrice(m, 8, getDiscount(m)) + calculateGroupPrice(n, 8, getDiscount(n));
+            if (price1 > price2) {
+              low = array[i];
+              high = array[j];
+            }
           }
-        }
-        if (low != 0 && high != 0) {
-          BalanceCriticalty balanceCriticalty = new BalanceCriticalty();
-          balanceCriticalty.setLow(array[i]);
-          balanceCriticalty.setHigh(array[j]);
-          balanceCriticalties.add(balanceCriticalty);
+          if (low != 0 && high != 0) {
+            BalanceCriticalty balanceCriticalty = new BalanceCriticalty();
+            balanceCriticalty.setLow(array[i]);
+            balanceCriticalty.setHigh(array[j]);
+            balanceCriticalties.add(balanceCriticalty);
+          }
         }
       }
     }
     bcArray = balanceCriticalties.toArray(new BalanceCriticalty[0]);
     sortBalanceCriticalty(bcArray);
+  }
+
+  private boolean alreadyHasCriticalties(int m, int n) {
+    if(bcArray == null || bcArray.length == 0)
+      return false;
+    for(BalanceCriticalty bc: bcArray) {
+      if(bc.getLow() == m && bc.getHigh() == n)
+        return true;
+    }
+    return false;
   }
 
   private Integer[] balanceGroup(List<Integer> bookTeam) {
@@ -150,19 +163,19 @@ public class Calculate {
     int low;
     int high;
 
-    public int getLow() {
+    int getLow() {
       return low;
     }
 
-    public void setLow(int low) {
+    void setLow(int low) {
       this.low = low;
     }
 
-    public int getHigh() {
+    int getHigh() {
       return high;
     }
 
-    public void setHigh(int high) {
+    void setHigh(int high) {
       this.high = high;
     }
   }
