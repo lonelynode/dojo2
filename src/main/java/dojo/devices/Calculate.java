@@ -66,7 +66,7 @@ public class Calculate {
         int n = array[j];
 
         if(!alreadyHasCriticalties(m , n)) {
-          while (m < n) {
+          while (m < n - 1) {
             m++;
             n--;
             double price2 = calculateGroupPrice(m, 8, getDiscount(m)) + calculateGroupPrice(n, 8, getDiscount(n));
